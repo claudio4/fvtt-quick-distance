@@ -1,0 +1,28 @@
+{
+  "id": "quick-distance",
+  "title": "Quick Distance",
+  "description": "Quickly measure the distance between two tokens",
+  "authors": [
+    {
+      "name": "Claudio4"
+    }
+  ],
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "9",
+    "verified": "10"
+  },
+  "esmodules": ["scripts/main.mjs"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
+]
+}
