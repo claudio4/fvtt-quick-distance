@@ -63,10 +63,11 @@ function calculateDistance(t1, t2) {
   const unitsPerPixel = canvas.dimensions.distance / canvas.dimensions.size;
   const pointsT1 = tokenToPoints3d(t1);
   const pointsT2 = tokenToPoints3d(t2);
+
+  // TODO: Look if this is worth optimizing. This has O(n^2) complexity, but n tends to be small, so maybe using a more
+  // "efficient" approach is not worth it.
   const pointsPairs = cartesianProduct(pointsT1, pointsT2);
   const distances = pointsPairs.map(([p1, p2]) => euclideanDistance(p1, p2));
-
-
   return Math.min(...distances) * unitsPerPixel;
 }
 
@@ -80,10 +81,14 @@ function tokenToPoints3d(token) {
   const pixelsPerSquare = canvas.dimensions.size;
   const pixelsPerHalfSquare = pixelsPerSquare / 2;
   const pixelsPerUnit = pixelsPerSquare / canvas.dimensions.distance;
+
   let {height, width} = token.document;
   const center = token.center;
   if (height < 1) {
     height = 1;
+    // Move the center to the center of the square.
+    // floorToMultipleOfN gives the first coordinate of the square (the leftmost),
+    // and we then add half a square to move it to the center.
     center.x = floorToMultipleOfN(center.x, pixelsPerSquare) + pixelsPerHalfSquare;
   }
   if (width < 1) {
@@ -96,9 +101,8 @@ function tokenToPoints3d(token) {
     y: center.y - pixelsPerHalfSquare * (height - 1),
     z: token.document.elevation * pixelsPerUnit,
   };
-  // log(topLeftMostPoint);
-  const points = [];
 
+  const points = [];
   for (let i = 0; i < token.document.width; i++) {
     for (let j = 0; j < height; j++) {
       points.push({
