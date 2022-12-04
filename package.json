@@ -2,7 +2,7 @@
   "devDependencies": {
     "@league-of-foundry-developers/foundry-vtt-types": "^9.280.0",
     "eslint": "^8.29.0",
-    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-google": "^0.14.0",
     "eslint-plugin-import": "^2.26.0"
   }
 }
