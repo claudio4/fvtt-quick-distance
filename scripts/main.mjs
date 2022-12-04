@@ -1,4 +1,5 @@
 import {info, log} from './logger.mjs';
+import {cartesianProduct, euclideanDistance, floorToMultipleOfN} from './math.mjs';
 
 /**
  * Determines whether the hooks have been stablished or not.
@@ -63,7 +64,7 @@ function calculateDistance(t1, t2) {
   const pointsT1 = tokenToPoints3d(t1);
   const pointsT2 = tokenToPoints3d(t2);
   const pointsPairs = cartesianProduct(pointsT1, pointsT2);
-  const distances = pointsPairs.map(([p1, p2]) => euclidean(p1, p2));
+  const distances = pointsPairs.map(([p1, p2]) => euclideanDistance(p1, p2));
 
 
   return Math.min(...distances) * unitsPerPixel;
@@ -79,17 +80,27 @@ function tokenToPoints3d(token) {
   const pixelsPerSquare = canvas.dimensions.size;
   const pixelsPerHalfSquare = pixelsPerSquare / 2;
   const pixelsPerUnit = pixelsPerSquare / canvas.dimensions.distance;
+  let {height, width} = token.document;
+  const center = token.center;
+  if (height < 1) {
+    height = 1;
+    center.x = floorToMultipleOfN(center.x, pixelsPerSquare) + pixelsPerHalfSquare;
+  }
+  if (width < 1) {
+    width = 1;
+    center.y = floorToMultipleOfN(center.y, pixelsPerSquare) + pixelsPerHalfSquare;
+  }
 
   const topLeftMostPoint = {
-    x: token.center.x - pixelsPerHalfSquare * (token.document.width - 1),
-    y: token.center.y - pixelsPerHalfSquare * (token.document.height - 1),
+    x: center.x - pixelsPerHalfSquare * (width - 1),
+    y: center.y - pixelsPerHalfSquare * (height - 1),
     z: token.document.elevation * pixelsPerUnit,
   };
-  log(topLeftMostPoint);
+  // log(topLeftMostPoint);
   const points = [];
 
   for (let i = 0; i < token.document.width; i++) {
-    for (let j = 0; j < token.document.height; j++) {
+    for (let j = 0; j < height; j++) {
       points.push({
         x: topLeftMostPoint.x + pixelsPerSquare*i,
         y: topLeftMostPoint.y + pixelsPerSquare*j,
@@ -99,26 +110,6 @@ function tokenToPoints3d(token) {
   }
 
   return points;
-}
-
-/**
- * Produces the cartesian product of the provided sets.
- * From https://stackoverflow.com/a/43053803
- * @param  {...any[]} a the operands
- * @return {any[]}
- */
-function cartesianProduct(...a) {
-  return a.reduce((a, b) => a.flatMap((d) => b.map((e) => [d, e].flat())));
-}
-
-/**
- * Calculates the euclidean distance between two 3.dimensional points.
- * @param {Point3d} p1 One of the points
- * @param {Point3d} p2  The other point
- * @return {number} the euclidean distance
- */
-function euclidean(p1, p2) {
-  return Math.sqrt(((p1.x - p2.x) ** 2) + ((p1.y - p2.y) ** 2) + ((p1.z - p2.z) ** 2));
 }
 
 Hooks.once('init', function() {

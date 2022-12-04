@@ -11,7 +11,6 @@ charset = utf-8
 [*.{js,jsx,ts,tsx,json,mjs}]
 tab_width = 2
 indent_size = 2
-insert_final_newline = false
 
 [*.{yml,yaml}]
 tab_width = 2
