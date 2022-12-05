@@ -4,6 +4,7 @@ export const MODULE_ID = 'quick-distance';
 export const SETTINGS = {
   enabled: 'enabled',
   forceEuclidean: 'forceEuclidean',
+  normalizeSubSquareCreatures: 'normalizeSubSquareCreatures',
 };
 
 /**
@@ -34,6 +35,14 @@ export async function registerSettings() {
     config: true,
     type: Boolean,
     default: false,
+  });
+  await game.settings.register(MODULE_ID, SETTINGS.normalizeSubSquareCreatures, {
+    name: `${MODULE_ID}.settings.${SETTINGS.normalizeSubSquareCreatures}.name`,
+    hint: `${MODULE_ID}.settings.${SETTINGS.normalizeSubSquareCreatures}.hint`,
+    scope: 'client',
+    config: true,
+    type: Boolean,
+    default: true,
   });
 }
 

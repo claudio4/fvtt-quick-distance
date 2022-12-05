@@ -42,19 +42,26 @@ function tokenToPoints3d(token) {
   const pixelsPerSquare = canvas.dimensions.size;
   const pixelsPerHalfSquare = pixelsPerSquare / 2;
   const pixelsPerUnit = pixelsPerSquare / canvas.dimensions.distance;
+  const normalizeSubSquare = game.settings.get(MODULE_ID, SETTINGS.normalizeSubSquareCreatures);
 
   let {height, width} = token.document;
   const center = token.center;
   if (height < 1) {
+    // Setting the height to one prevents the code downwards from altering the center,
+    // so it is necessary even if we do not normalize the creature
     height = 1;
-    // Move the center to the center of the square.
-    // floorToMultipleOfN gives the first coordinate of the square (the leftmost),
-    // and we then add half a square to move it to the center.
-    center.x = floorToMultipleOfN(center.x, pixelsPerSquare) + pixelsPerHalfSquare;
+    if (normalizeSubSquare) {
+      // Move the center to the center of the square.
+      // floorToMultipleOfN gives the first coordinate of the square (the leftmost),
+      // and we then add half a square to move it to the center.
+      center.x = floorToMultipleOfN(center.x, pixelsPerSquare) + pixelsPerHalfSquare;
+    }
   }
   if (width < 1) {
     width = 1;
-    center.y = floorToMultipleOfN(center.y, pixelsPerSquare) + pixelsPerHalfSquare;
+    if (normalizeSubSquare) {
+      center.y = floorToMultipleOfN(center.y, pixelsPerSquare) + pixelsPerHalfSquare;
+    }
   }
 
   const topLeftMostPoint = {

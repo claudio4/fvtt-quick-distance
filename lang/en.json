@@ -8,6 +8,10 @@
       "forceEuclidean": {
         "name": "Always use euclidean distance",
         "hint": "Use euclidean distance even when the game system offers a way to calculate the distance (a.k.a same distance as ruler). Otherwise euclidean distance will only be used when no other method is available."
+      },
+      "normalizeSubSquareCreatures": {
+        "name": "Normalize sub-square creatures",
+        "hint": "Treat creatures that occupy less than square like they occupy the full square. This may produce results more in line with what one expects when a grid is in-place but less accurate for gridless maps."
       }
     }
   }

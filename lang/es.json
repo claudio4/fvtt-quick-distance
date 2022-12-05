@@ -7,7 +7,11 @@
       },
       "forceEuclidean": {
         "name": "Siempre usar distancia euclidea",
-        "hint": "Desea utilizar siempre la distancia euclidea. Si esta opción nno esta habilitada la distancia euclidea solo se usara cuando no se pueda utilizar la proprocioanda pro el sistema de juego."
+        "hint": "Desea utilizar siempre la distancia euclidea. Si esta opción no esta habilitada la distancia euclidea solo se usara cuando no se pueda utilizar la proprocioanda pro el sistema de juego."
+      },
+      "normalizeSubSquareCreatures": {
+        "name": "Normalizar criaturas que ocupan menos de una casilla",
+        "hint": "Tratar las criaturas que ocupan menos de una casilla como si trataran la casilla entera. Esto puede producir resultados más acordes a lo que uno espera cuando utiliza una cuadricula, pero también serán menos precisos en mapas sin cuadricula."
       }
     }
   }
