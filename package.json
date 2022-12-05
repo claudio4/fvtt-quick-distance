@@ -1,6 +1,10 @@
 {
+  "scripts": {
+    "build": "esbuild --bundle --minify --sourcemap --format=esm --target=esnext --outdir=dist/scripts scripts/main.mjs"
+  },
   "devDependencies": {
     "@league-of-foundry-developers/foundry-vtt-types": "^9.280.0",
+    "esbuild": "^0.15.18",
     "eslint": "^8.29.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-import": "^2.26.0"
