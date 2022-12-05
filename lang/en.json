@@ -17,6 +17,16 @@
         "name": "Normalize sub-square creatures",
         "hint": "Treat creatures that occupy less than square like they occupy the full square. This may produce results more in line with what one expects when a grid is in-place but less accurate for gridless maps."
       }
+    },
+    "keybinds": {
+      "toggleEnabled": {
+        "name": "Toggles \"Show distance on hover\"",
+        "hint": "Toggles whether to so the token the distance between the selected token and the hovered one.",
+        "notification": {
+          "enabled": "Now the distance between tokens will be shown on hover.",
+          "disabled": "The distance between tokens will no longer be shown on hove."
+        }
+      }
     }
   }
 }

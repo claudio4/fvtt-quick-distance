@@ -10,7 +10,7 @@ export const SETTINGS = {
 
 /**
  * Register the module settings in Foundry.
- * THIS FUNCTION SHOULD ONLY BE CALLED ONCE.
+ * THIS FUNCTION SHOULD ONLY BE CALLED ONCE IN THE INIT.
  * @return {Promise<undefined>}
  */
 export async function registerSettings() {
@@ -55,3 +55,33 @@ export async function registerSettings() {
   });
 }
 
+const KEYBINDS = {
+  toggleEnabled: 'toggleEnabled',
+};
+
+/**
+ * Register the module keybinds in Foundry.
+ * THIS FUNCTION SHOULD ONLY BE CALLED ONCE IN THE INIT.
+ */
+export function registerKeybinds() {
+  game.keybindings.register(MODULE_ID, 'toggleEnabled', {
+    name: `${MODULE_ID}.keybinds.${KEYBINDS.toggleEnabled}.name`,
+    hint: `${MODULE_ID}.keybinds.${KEYBINDS.toggleEnabled}.hint`,
+    editable: [
+      {
+        key: 'F2',
+      },
+    ],
+    onDown: () => {
+      const isEnabled = game.settings.get(MODULE_ID, SETTINGS.enabled);
+      game.settings.set(MODULE_ID, SETTINGS.enabled, !isEnabled);
+      ui.notifications?.info?.(
+          `${MODULE_ID}.keybinds.${KEYBINDS.toggleEnabled}.notification.${isEnabled ? 'disabled' : 'enabled'}`,
+          {
+            localize: true,
+          },
+      );
+    },
+    precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
+  });
+}
