@@ -24,7 +24,7 @@
         "hint": "Cambia si muestra la distancia entre el token seleccionado y el token que tiene el cursor encima o no.",
         "notification": {
           "enabled": "Ahora se mostrara la distancia entre el token seleccionado y el token que tiene el cursor encima.",
-          "disabled": "Yano se mostrara la distancia entre el token seleccionado y el token que tiene el cursor encima."
+          "disabled": "Ya no se mostrara la distancia entre el token seleccionado y el token que tiene el cursor encima."
         }
       }
     }
