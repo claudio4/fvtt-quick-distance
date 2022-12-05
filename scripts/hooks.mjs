@@ -1,5 +1,5 @@
 import {calculateDistance} from './distance.mjs';
-import {log} from './logger.mjs';
+import {drawTooltip, clearTooltip} from './draw.mjs';
 
 /**
  * Determines whether the hooks have been stablished or not.
@@ -41,6 +41,11 @@ function handleTokenHover(token, isHovering) {
   if (!source || token.id === source.id) return;
 
   if (isHovering) {
-    log(calculateDistance(source, token));
+    const distance = calculateDistance(source, token);
+    const unitName = canvas?.scene?.grid?.units;
+    const text = unitName ? `${Math.round(distance)} ${unitName}` : Math.round(distance);
+    drawTooltip(token, text);
+  } else {
+    clearTooltip();
   }
 }
