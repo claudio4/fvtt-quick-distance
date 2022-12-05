@@ -19,6 +19,7 @@ let hooksLoaded = false;
 export function setupHooks() {
   if (hooksLoaded) return;
   Hooks.on('hoverToken', handleTokenHover);
+  Hooks.on('controlToken', clearTooltip);
   hooksLoaded = true;
 }
 
@@ -30,6 +31,7 @@ export function setupHooks() {
 export function removeHooks() {
   if (!hooksLoaded) return;
   Hooks.off('hoverToken', handleTokenHover);
+  Hooks.off('controlToken', clearTooltip);
   hooksLoaded = false;
   // Remove any leftover tooltip, otherwise the tooltip will remain undefinedly.
   clearTooltip();
