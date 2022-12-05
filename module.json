@@ -4,13 +4,15 @@
   "description": "Quickly measure the distance between two tokens",
   "authors": [
     {
-      "name": "Claudio4"
+      "name": "Claudio4",
+      "url": "https://claudio4.com"
     }
   ],
-  "version": "0.1.0",
+  "version": "0.0.0",
   "compatibility": {
     "minimum": "9",
-    "verified": "10"
+    "verified": "10",
+    "maximum": "11"
   },
   "esmodules": ["scripts/main.mjs"],
   "languages": [
@@ -24,5 +26,10 @@
       "name": "Español",
       "path": "lang/es.json"
     }
-]
+  ],
+  "url": "This is auto replaced",
+  "manifest": "This is auto replaced",
+  "download": "This is auto replaced",
+  "license": "LICENSE",
+  "readme": "README.md"
 }
