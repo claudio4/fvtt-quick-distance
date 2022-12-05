@@ -31,6 +31,8 @@ export function removeHooks() {
   if (!hooksLoaded) return;
   Hooks.off('hoverToken', handleTokenHover);
   hooksLoaded = false;
+  // Remove any leftover tooltip, otherwise the tooltip will remain undefinedly.
+  clearTooltip();
 }
 
 /**
