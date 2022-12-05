@@ -27,3 +27,14 @@ export function euclideanDistance(p1, p2) {
 export function floorToMultipleOfN(x, n) {
   return Math.floor(x / n) * n;
 }
+
+/**
+ * Rounds the number X to the n-th decimal place.
+ * @param {number} x The number to be rounded
+ * @param {number} n  How many decimals places should be left
+ * @return {number}
+ */
+export function roundToNDecimals(x, n) {
+  const factor = Math.pow(10, n);
+  return Math.round(x * factor) / factor;
+}

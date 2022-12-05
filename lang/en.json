@@ -1,6 +1,10 @@
 {
   "quick-distance": {
     "settings": {
+      "decimalPlaces": {
+        "name": "Decimal places",
+        "hint": "Distances will be rounded to show no more decimal places that the defined here. Distances with less decimal places will be presented WITHOUT adding padding zeros to the right."
+      },
       "enabled": {
         "name": "Show distance on hover",
         "hint": "Whether to so the token the distance between the selected token and the hovered one."

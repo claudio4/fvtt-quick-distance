@@ -1,6 +1,10 @@
 {
   "quick-distance": {
     "settings": {
+      "decimalPlaces": {
+        "name": "Cantidad de decimales",
+        "hint": "Los números se redondearán para mostrar como máximo los números decimales especificados. Si un número tiene menos decimales que los aquí especificado se mostrara tal cual, SIN añadir ceros a la derecha.."
+      },
       "enabled": {
         "name": "Mostrar distancia cuando el cursor pase por encima",
         "hint": "Indica si desea que muestre la distancia al token seleccioando cuando pasa el cursor por encima de otro."
