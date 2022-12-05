@@ -1,4 +1,5 @@
 import {cartesianProduct, euclideanDistance, floorToMultipleOfN} from './math.mjs';
+import {MODULE_ID, SETTINGS} from './settings.mjs';
 
 /**
  * A point in a 3D space.
@@ -21,9 +22,12 @@ export function calculateDistance(t1, t2) {
   // TODO: Look if this is worth optimizing. This has O(n^2) complexity, but n tends to be small, so maybe using a more
   // "efficient" approach is not worth it.
   const pointsPairs = cartesianProduct(pointsT1, pointsT2);
-  const useEuclidean = t1.document.elevation !== t2.document.elevation;
+
+  const useEuclidean = t1.document.elevation !== t2.document.elevation ||
+    game.settings.get(MODULE_ID, SETTINGS.forceEuclidean);
   const distanceFunction = useEuclidean ? ([p1, p2]) => euclideanDistance(p1, p2) :
     ([p1, p2]) => canvas.grid.measureDistance(p1, p2, {gridSpaces: true});
+
   const distances = pointsPairs.map(distanceFunction);
   return Math.min(...distances) * (useEuclidean ? canvas.dimensions.distance / canvas.dimensions.size : 1);
 }

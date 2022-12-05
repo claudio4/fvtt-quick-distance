@@ -1,3 +1,14 @@
 {
-  "QUICK-DISTANCE.TMP": "TMP"
+  "quick-distance": {
+    "settings": {
+      "enabled": {
+        "name": "Show distance on hover",
+        "hint": "Whether to so the token the distance between the selected token and the hovered one."
+      },
+      "forceEuclidean": {
+        "name": "Always use euclidean distance",
+        "hint": "Use euclidean distance even when the game system offers a way to calculate the distance (a.k.a same distance as ruler). Otherwise euclidean distance will only be used when no other method is available."
+      }
+    }
+  }
 }

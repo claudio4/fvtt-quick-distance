@@ -1,3 +1,14 @@
 {
-  "QUICK-DISTANCE.TMP": "TMP"
+  "quick-distance": {
+    "settings": {
+      "enabled": {
+        "name": "Mostrar distancia cuando el cursor pase por encima",
+        "hint": "Indica si desea que muestre la distancia al token seleccioando cuando pasa el cursor por encima de otro."
+      },
+      "forceEuclidean": {
+        "name": "Siempre usar distancia euclidea",
+        "hint": "Desea utilizar siempre la distancia euclidea. Si esta opción nno esta habilitada la distancia euclidea solo se usara cuando no se pueda utilizar la proprocioanda pro el sistema de juego."
+      }
+    }
+  }
 }
