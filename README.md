@@ -2,6 +2,8 @@
 
 The Quick-Distance module provides a convenient way to quickly and easily see the distance between your selected token and any other token on the map. Simply hover your mouse over another token, and a tooltip will appear showing the distance between the two tokens, taking into account both the horizontal distance and the difference in elevation. This can be especially useful for determining the range of spells or abilities, or for planning out movement and positioning in combat.
 
+![demo](https://user-images.githubusercontent.com/9874071/206549442-5dbf2b08-e609-4d08-aa15-6a0d9ea07444.gif)
+
 
 ## Features
 
