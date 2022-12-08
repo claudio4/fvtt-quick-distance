@@ -6,6 +6,7 @@ export const SETTINGS = {
   enabled: 'enabled',
   forceEuclidean: 'forceEuclidean',
   normalizeSubSquareCreatures: 'normalizeSubSquareCreatures',
+  onlyInCombat: 'onlyInCombat',
 };
 
 /**
@@ -26,6 +27,19 @@ export async function registerSettings() {
         setupHooks();
       } else {
         removeHooks();
+      }
+    },
+  });
+  await game.settings.register(MODULE_ID, SETTINGS.onlyInCombat, {
+    name: `${MODULE_ID}.settings.${SETTINGS.onlyInCombat}.name`,
+    hint: `${MODULE_ID}.settings.${SETTINGS.onlyInCombat}.hint`,
+    scope: 'client',
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      if (game.settings.get(MODULE_ID, SETTINGS.enabled)) {
+        setupHooks();
       }
     },
   });

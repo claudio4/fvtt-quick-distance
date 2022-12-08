@@ -16,6 +16,10 @@
       "normalizeSubSquareCreatures": {
         "name": "Normalize sub-square creatures",
         "hint": "Treat creatures that occupy less than square like they occupy the full square. This may produce results more in line with what one expects when a grid is in-place but less accurate for gridless maps."
+      },
+      "onlyInCombat": {
+        "name": "Only in combat",
+        "hint": "If active the distance between the selected token and the hovered token will only be show while there is an active combat encounter."
       }
     },
     "keybinds": {
