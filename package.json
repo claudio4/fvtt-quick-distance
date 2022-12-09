@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "esbuild --bundle --minify --sourcemap --format=esm --target=esnext --outdir=dist/scripts scripts/main.mjs"
+    "build": "esbuild --bundle --minify --sourcemap --format=esm --target=esnext --outdir=dist/scripts scripts/main.mjs",
+    "build-lang": "node tools/minify-json.mjs lang dist/lang"
   },
   "devDependencies": {
     "@league-of-foundry-developers/foundry-vtt-types": "^9.280.0",

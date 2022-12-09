@@ -33,9 +33,11 @@ jobs:
     - run: npm ci
     - name: build javascript
       run: npm run build
+    - name: build JSON
+      run: npm run build-lang
 
     - name: Copy files to dist
-      run: cp -R module.json README.md LICENSE lang/ dist/
+      run: cp -R module.json README.md LICENSE dist/
     # Create a zip file with all files required by the module to add to the release
     - run: zip -r ./module.zip dist/*
 
