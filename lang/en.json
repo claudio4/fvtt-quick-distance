@@ -3,7 +3,7 @@
     "settings": {
       "decimalPlaces": {
         "name": "Decimal places",
-        "hint": "Distances will be rounded to show no more decimal places that the defined here. Distances with less decimal places will be presented WITHOUT adding padding zeros to the right."
+        "hint": "Distances will be rounded to the defined number of decimal places. Numbers with fewer decimal places will not be padded with zeros."
       },
       "enabled": {
         "name": "Show distance on hover",
