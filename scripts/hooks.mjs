@@ -7,7 +7,7 @@ import {MODULE_ID, SETTINGS} from './settings.mjs';
 /**
  * Add the necessary hooks for this module. This does not apply too essential hooks like init
  * as those hooks will always be stablished.
- * It is safe to call this function even when the hooks are alredy active.
+ * It is safe to call this function even when the hooks are already active.
  */
 export function setupHooks() {
   if (game.settings.get(MODULE_ID, SETTINGS.onlyInCombat)) {
@@ -37,8 +37,8 @@ export function removeHooks() {
 let combatHooks = false;
 
 /**
- * Add the combat hooks. It also ensure that hover hoos are set-up if there is a combat alredy going on.
- * It is safe to call this function even when the hooks are alredy active.
+ * Add the combat hooks. It also ensure that hover hooks are set-up if there is a combat already going on.
+ * It is safe to call this function even when the hooks are already active.
  */
 function setupCombatHooks() {
   if (combatHooks) return;
@@ -46,7 +46,7 @@ function setupCombatHooks() {
   Hooks.on('deleteCombat', handleDeleteCombat);
   combatHooks = true;
 
-  // Hnadle the case where this function is called while a combat is alredy going on.
+  // Handle the case where this function is called while a combat is already going on.
   const activeCombat = game.combats?.find((c) => c.started);
   if (activeCombat) {
     setupHoverHooks();
@@ -74,7 +74,7 @@ let hoverHooks = false;
 
 /**
  * Add the hooks related with hovering.
- * It is safe to call this function even when the hooks are alredy active.
+ * It is safe to call this function even when the hooks are already active.
  */
 function setupHoverHooks() {
   if (hoverHooks) return;
