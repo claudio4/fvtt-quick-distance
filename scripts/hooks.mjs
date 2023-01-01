@@ -42,7 +42,8 @@ let combatHooks = false;
  */
 function setupCombatHooks() {
   if (combatHooks) return;
-  Hooks.on('combatStart', handleCombatStart);
+  // Ideally this should be 'combatStart' but that event only fire on the DM's PC.
+  Hooks.on('updateCombat', handleCombatStart);
   Hooks.on('deleteCombat', handleDeleteCombat);
   combatHooks = true;
 
@@ -98,9 +99,12 @@ function removeHoverHooks() {
 
 /**
  * Handles the event of a combat starting
+ * @param {Combat} combat
  */
-function handleCombatStart() {
-  setupHoverHooks();
+function handleCombatStart(combat) {
+  if (combat.started && combat.current.round === 1 && combat.current.turn === 0) {
+    setupHoverHooks();
+  }
 }
 
 /**
