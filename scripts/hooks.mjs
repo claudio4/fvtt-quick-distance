@@ -61,7 +61,7 @@ function setupCombatHooks() {
  */
 function removeCombatHooks() {
   if (!combatHooks) return;
-  Hooks.off('combatStart', handleCombatStart);
+  Hooks.off('updateCombat', handleCombatStart);
   Hooks.off('deleteCombat', handleDeleteCombat);
   combatHooks = false;
   removeHoverHooks();
