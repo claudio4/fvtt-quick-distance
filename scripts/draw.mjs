@@ -1,3 +1,5 @@
+import { error } from "./logger.mjs";
+
 /**
  * Keeps track of the tooltip
  * @type {PreciseText | null}
@@ -22,10 +24,16 @@ export function drawTooltip(token, text) {
 
 /**
  * Deletes the tooltip.
- * If there is no tooltip calling this function has no effect.
+ * If there is no tooltip, calling this function has no effect.
  */
 export function clearTooltip() {
   if (!tooltip) return;
-  tooltip.destroy();
+  try {
+    if (!tooltip.destroyed) {
+      tooltip.destroy(true);
+    }
+  } catch (e) {
+    error('Failed to destroy tooltip', e);
+  }
   tooltip = null;
 }
