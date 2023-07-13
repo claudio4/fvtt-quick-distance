@@ -1,4 +1,4 @@
-import { error } from "./logger.mjs";
+import {error} from './logger.mjs';
 
 /**
  * Keeps track of the tooltip
