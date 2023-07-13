@@ -9,13 +9,14 @@ export function cartesianProduct(...a) {
 }
 
 /**
- * Calculates the euclidean distance between two 3.dimensional points.
- * @param {Point3d} p1 One of the points
- * @param {Point3d} p2  The other point
- * @return {number} the euclidean distance
+ * Uses the Pythagorean theorem to calculate the hypotenuse of a right triangle given two cathetus.
+ * This function does not care wether its argumentes are positive or negative numbers.
+ * @param {number} a One of the cathetus.
+ * @param {number} b The other cathetus.
+ * @return {number} length of the hypotenuse.
  */
-export function euclideanDistance(p1, p2) {
-  return Math.sqrt(((p1.x - p2.x) ** 2) + ((p1.y - p2.y) ** 2) + ((p1.z - p2.z) ** 2));
+export function calculateHypotenuse(a, b) {
+  return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
 }
 
 /**
