@@ -4,7 +4,6 @@ The Quick-Distance module provides a convenient way to quickly and easily see th
 
 ![demo](https://user-images.githubusercontent.com/9874071/206549442-5dbf2b08-e609-4d08-aa15-6a0d9ea07444.gif)
 
-
 ## Features
 
 - Displays the distance between two tokens on the map, using either game system distance measurements or Euclidean distance
@@ -17,6 +16,7 @@ The Quick-Distance module provides a convenient way to quickly and easily see th
 - Foundry VTT version 9 or higher (including 10).
 
 ## Install instructions
+
 1. Go to the "releases" page on this repository.
 
 ![](https://user-images.githubusercontent.com/9874071/207355820-7fafd5e4-984f-4209-b311-7aaf7e7c5393.png)
@@ -37,13 +37,38 @@ The Quick-Distance module provides a convenient way to quickly and easily see th
 
 ![](https://user-images.githubusercontent.com/9874071/207357907-2b4f76e6-1068-4815-bd22-655349cae93a.png)
 
+## Public API
 
+The Quick-Distance module provides a public API for developers through the `QuickDistance` global variable. This allows module and macro developers to calculate distances between tokens programmatically.
+
+### Available Methods
+
+#### `calculateDistanceBetweenTokens(t1, t2)`
+
+**Description:** Calculates the distance between two tokens on the map, taking into account both horizontal and elevation differences. The calculation respects the configured distance measurement (game system or Euclidean).
+
+**Parameters:**
+
+- `t1` (**Token**) - The first token.
+- `t2` (**Token**) - The second token.
+
+**Returns:**
+
+- `number` - The distance between the two tokens using the current scene units.
+
+**Usage Example:**
+
+```javascript
+const distance = QuickDistance.calculateDistanceBetweenTokens(token1, token2);
+console.log(`Distance: ${distance} ${canvas.scene.grid.units}`);
+```
 
 ## Known Issues
+
 - The Quick-Distance module does not currently have a concept of token height, so all calculations treat tokens as if they are 1 pixel tall. This means that sometimes the distance will be slightly inaccurate, as in a more accurate measurement the source/targets height might need to be subtracted.
 
-
 ## Acknowledgments
+
 The Quick-Distance module was created as a free and open-source (FOSS) alternative to [TheRipper93's Hover Distance](https://theripper93.com/module/hover-distance) module, and was developed with the goal of providing a similar set of features and functionality to the Foundry community. I am grateful to Ripper93 for their contributions to the Foundry platform and for serving as a source of inspiration for this project.
 
 ## License
